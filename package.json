@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "demojs",
   "private": true,
   "version": "0.0.0",
   "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "repository": "https://github.com/tmhao2005/demojs",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
