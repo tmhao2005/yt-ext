@@ -1,0 +1,23 @@
+<p>This is the partial for view 1.</p>
+<ul>
+    <li ng-repeat="item in ::vm.arr track by $index" ng-click="vm.select(item)">{{::item}}</li>
+</ul>
+
+<!-- Interact with form -->
+
+<form name="info" novalidate>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" modify-input data-ng-model="vm.name"/>
+        <show-input name="vm.name">
+            <div class="selected-item">This value is {{vm.selectedItem}}</div>
+        </show-input>
+    </div>
+    </br>
+    <button type="submit">Submit</button>
+</form>
+
+</br>
+
+<input type="number" ng-model="vm.value" />
+<item-counter ng-model="vm.value"></item-counter>
