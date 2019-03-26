@@ -1,0 +1,25 @@
+{
+  "name": "yt-ext",
+  "version": "1.0.0",
+  "description": "Just replay the video",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.dev.js",
+    "test": "npm test"
+  },
+  "keywords": [
+    "yt-replay"
+  ],
+  "author": "tmhao2005@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.81",
+    "copy-webpack-plugin": "^5.0.2",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {}
+}

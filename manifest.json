@@ -1,0 +1,11 @@
+{
+  "name": "yt-ext",
+  "version": "1.0.0",
+  "description": "Just replay video on YouTube",
+  "permissions": ["storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "manifest_version": 2
+}
