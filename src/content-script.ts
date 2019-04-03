@@ -34,6 +34,7 @@ const initialize = () => {
 
     if (hasPlayer()) {
       vURL = window.location.search;
+
       player = getVideoPlayer();
 
       makeControls(player);
@@ -116,7 +117,8 @@ const handleNewVideoInstalled = (btnReplay: Element, repeater: number) => {
       if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
 
         if (vURL !== window.location.search) {
-          console.log('video changed detected...');
+          vURL = window.location.search;
+
           deactivate(btnReplay, repeater);
 
           observer.disconnect();
