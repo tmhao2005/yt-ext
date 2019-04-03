@@ -1,11 +1,27 @@
 {
   "name": "yt-ext",
   "version": "1.0.0",
-  "description": "Just replay video on YouTube",
-  "permissions": ["storage"],
+  "description": "Just replay video & skip ads on YouTube",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "clipboardRead",
+    "https://*.youtube.com/"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "css": ["yt-styles.css"],
+      "js": ["contentScript.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
   },
   "manifest_version": 2
 }
