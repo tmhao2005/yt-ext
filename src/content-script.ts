@@ -21,28 +21,13 @@ const YTSelectors = {
 };
 
 
-const hasPlayer = () => /^\?v=.+/.test(window.location.search) && !!document.querySelector(YTSelectors.mainPlayer);
+const hasPlayer = (): boolean => /^\?v=.+/.test(window.location.search) && !!document.querySelector(YTSelectors.mainPlayer);
 
-const hasVideoAds = () => !!document.querySelector(YTSelectors.videoAds);
+const hasVideoAds = (): boolean => !!document.querySelector(YTSelectors.videoAds);
 
-const hasOverlayAds = () => !!document.querySelector(YTSelectors.btnCloseAdsOverlay);
+const hasOverlayAds = (): boolean => !!document.querySelector(YTSelectors.btnCloseAdsOverlay);
 
-const hasAds = () => hasOverlayAds() || hasVideoAds();
-
-const initialize = () => {
-  const interval = setInterval(() => {
-
-    if (hasPlayer()) {
-      vURL = window.location.search;
-
-      player = getVideoPlayer();
-
-      makeControls(player);
-
-      clearInterval(interval);
-    }
-  }, 100);
-};
+const hasAds = (): boolean => hasOverlayAds() || hasVideoAds();
 
 const getVideoPlayer = (): HTMLVideoElement => {
   const video = document.querySelector(YTSelectors.mainPlayer) as HTMLVideoElement;
@@ -50,7 +35,7 @@ const getVideoPlayer = (): HTMLVideoElement => {
   return video;
 };
 
-const makeControls = (player: HTMLVideoElement) => {
+const attachControls = (player: HTMLVideoElement) => {
   const leftControls = document.querySelector(YTSelectors.playerLeftControls);
 
   const btnReplay = document.createElement('a');
@@ -60,21 +45,21 @@ const makeControls = (player: HTMLVideoElement) => {
 
   leftControls.insertBefore(btnReplay, document.querySelector(YTSelectors.btnPlayVideo));
 
-  attachEventsToReplayButton(btnReplay, player);
+  bindEventsToReplayButton(btnReplay, player);
+
+  handleNewVideoInstalled(btnReplay);
 
   return { btnReplay };
 };
 
-const attachEventsToReplayButton = (btnReplay: Element, player: HTMLVideoElement) => {
+const bindEventsToReplayButton = (btnReplay: Element, player: HTMLVideoElement) => {
   let repeater;
 
   btnReplay.addEventListener('click', () => {
     if (btnReplay.classList.contains('active')) {
       deactivate(btnReplay, repeater);
     } else {
-      repeater = activate(btnReplay, player);
-
-      handleNewVideoInstalled(btnReplay, repeater);
+      activate(btnReplay, player);
     }
   });
 };
@@ -111,7 +96,7 @@ const deactivate = (btnReplay: Element, repeater: number) => {
   clearInterval(repeater);
 };
 
-const handleNewVideoInstalled = (btnReplay: Element, repeater: number) => {
+const handleNewVideoInstalled = (btnReplay: Element) => {
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
@@ -119,9 +104,10 @@ const handleNewVideoInstalled = (btnReplay: Element, repeater: number) => {
         if (vURL !== window.location.search) {
           vURL = window.location.search;
 
-          deactivate(btnReplay, repeater);
+          console.log('new video url has changed to', vURL);
 
-          observer.disconnect();
+          // deactivate(btnReplay, repeater);
+          // observer.disconnect();
         }
       }
     }
@@ -142,13 +128,33 @@ const clearAds = (player: HTMLMediaElement) => {
   });
 
   if (hasVideoAds()) {
-    player.currentTime = 5;
+    player.currentTime = player.duration;
 
-    document.querySelector(YTSelectors.btnSkipVideoAds).dispatchEvent(event);
+    const btnClose = document.querySelector(YTSelectors.btnSkipVideoAds);
 
+    if (btnClose) {
+      btnClose.dispatchEvent(event);
+    }
   } else {
     document.querySelector(YTSelectors.btnCloseAdsOverlay).dispatchEvent(event);
   }
+};
+
+const initialize = () => {
+  const interval = setInterval(() => {
+
+    if (hasPlayer()) {
+      vURL = window.location.search;
+
+      console.log('has video installed');
+
+      player = getVideoPlayer();
+
+      attachControls(player);
+
+      clearInterval(interval);
+    }
+  }, 500);
 };
 
 initialize();

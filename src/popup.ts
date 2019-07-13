@@ -1,16 +1,17 @@
-// const onClick = (e: any) => {
-//   chrome.tabs.executeScript(
-//     null,
-//     {code:"document.body.style.backgroundColor='" + e.target.id + "'"},
-//   );
+const onChat = (e: Event) => {
+  // chrome.tabs.executeScript(
+  //   null,
+  //   {code: "document.body.style.backgroundColor='" + e.target.id + "'" },
+  // );
 
-//   window.close();
-// }
+  const newURL = "https://www.facebook.com/tmhao2005";
+  chrome.tabs.create({ url: newURL });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const divs = document.querySelectorAll('li');
+  window.close();
+}
 
-//   for (let i = 0; i < divs.length; i++) {
-//     divs[i].addEventListener('click', onClick);
-//   }
-// });
+document.addEventListener('DOMContentLoaded', () => {
+  const chatWithAuthor = document.querySelector('.fb');
+
+  chatWithAuthor.addEventListener('click', onChat);
+});

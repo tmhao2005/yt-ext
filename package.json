@@ -1,7 +1,7 @@
 {
-  "name": "yt-ext",
+  "name": "yt-replay",
   "version": "1.0.0",
-  "description": "Just replay the video",
+  "description": "Helps you click skip ads automatically and be able to replay video at the end",
   "main": "index.js",
   "scripts": {
     "start": "webpack --config webpack.dev.js --watch",
