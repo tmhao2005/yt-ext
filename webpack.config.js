@@ -39,9 +39,10 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".css"]
   },
   plugins: [
-    new CopyWebpackPlugin([{
-      from: "manifest.json",
-    }]),
+    new CopyWebpackPlugin([
+      { from: "manifest.json" },
+      { from: "images/*" },
+    ]),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "./src/popup.html"),
       filename: "popup.html",
