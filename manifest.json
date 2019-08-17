@@ -8,6 +8,12 @@
     "clipboardRead",
     "https://*.youtube.com/"
   ],
+  "icons": {
+    "16": "images/yt_16.png",
+    "32": "images/yt_32.png",
+    "48": "images/yt_48.png",
+    "128": "images/yt_128.png"
+  },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -21,7 +27,13 @@
     }
   ],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/yt_16.png",
+      "32": "images/yt_32.png",
+      "48": "images/yt_48.png",
+      "128": "images/yt_128.png"
+    }
   },
   "manifest_version": 2
 }
