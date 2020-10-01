@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation-float.min.css">
-    <title>YT replay</title>
+    <title>Lucky number</title>
   </head>
 
-  <body>
-    <div class="callout" style="min-width: 252px">
-      <h5 classs="name">Author: Hao Tran</h5>
-      <p class="email">Email: tmhao2005@gmail.com</p>
-      <a class="fb">About me on FB</a>
-    </ul>
+  <body style="min-width: 252px; padding: 16px;">
+    <div style="margin-bottom: 16px;">
+      We will help to generate a lucky number for you. Click the following number to generate
+    </div>    
+
+    <div>
+      <button class="button" id="btnGenerate">Generate</button>
+    </div>
+
+    <div style="opacity: 0;" class="resultWrapper">
+      Today's lucky number: <h1 id="yourNumberToday"></h1>
+    </div>
   </body>
 </html>

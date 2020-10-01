@@ -43,7 +43,7 @@ const attachControls = (player: HTMLVideoElement) => {
   btnReplay.id = 'btnReplay';
   btnReplay.innerHTML = iconDeactive;
 
-  leftControls.insertBefore(btnReplay, document.querySelector(YTSelectors.btnPlayVideo));
+  leftControls.prepend(btnReplay);
 
   bindEventsToReplayButton(btnReplay, player);
 
