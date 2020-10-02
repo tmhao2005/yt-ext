@@ -67,7 +67,7 @@ const bindEventsToReplayButton = (btnReplay: Element, player: HTMLVideoElement) 
 const replay = () => {
   player.currentTime = 0;
   player.play();
-}
+};
 
 const activate = (btnReplay: Element, player: HTMLMediaElement) => {
   btnReplay.classList.add('active');
@@ -96,7 +96,7 @@ const deactivate = (btnReplay: Element, repeater: number) => {
   clearInterval(repeater);
 };
 
-const handleNewVideoInstalled = (btnReplay: Element) => {
+const handleNewVideoInstalled = (_btnReplay: Element) => {
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
@@ -150,7 +150,9 @@ const initialize = () => {
 
       player = getVideoPlayer();
 
-      attachControls(player);
+      const { btnReplay } = attachControls(player);
+      // Activate as a video found
+      activate(btnReplay, player);
 
       clearInterval(interval);
     }

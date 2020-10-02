@@ -8,7 +8,7 @@ const onChat = (e: Event) => {
   chrome.tabs.create({ url: newURL });
 
   window.close();
-}
+};
 
 function generateLuckyNumber(max: number): number {
   return Math.floor(Math.random() * Math.floor(max));
