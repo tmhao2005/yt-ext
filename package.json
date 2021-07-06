@@ -15,6 +15,16 @@
   ],
   "author": "tmhao2005@gmail.com",
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
     "@types/chrome": "0.0.81",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
@@ -25,7 +35,9 @@
     "eslint-config-prettier": "^6.12.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
-    "prettier": "^2.1.2",
+    "husky": "4.x",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
     "webpack": "^4.29.6",
