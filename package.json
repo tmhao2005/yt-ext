@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.dev.js",
-    "test": "npm test",
+    "test": "jest",
     "rm:dist": "rimraf dist",
     "lint:fix": "eslint 'src/**/*.ts' --fix"
   },
@@ -22,11 +22,13 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "devDependencies": {
     "@types/chrome": "0.0.81",
+    "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "copy-webpack-plugin": "^5.0.2",
@@ -36,13 +38,21 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "4.x",
+    "jest": "^27.0.6",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    }
+  }
 }
