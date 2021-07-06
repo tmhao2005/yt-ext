@@ -48,7 +48,6 @@
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {},
   "jest": {
     "testEnvironment": "jsdom",
     "transform": {
