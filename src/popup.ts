@@ -15,17 +15,17 @@ function generateLuckyNumber(max: number): number {
 }
 
 function onGenerateLuckyNumber() {
-  const domResult = document.getElementById('yourNumberToday');
-  const resultWrapper = document.querySelector<HTMLElement>('.resultWrapper');
+  const domResult = document.getElementById("yourNumberToday");
+  const resultWrapper = document.querySelector<HTMLElement>(".resultWrapper");
   const luckyNumber = generateLuckyNumber(999999);
 
   domResult.innerHTML = `${luckyNumber}`;
-  resultWrapper.style.opacity = '1';
+  resultWrapper.style.opacity = "1";
 }
 
 // Debug by right click when popup has been just open, inspect elements
-document.addEventListener('DOMContentLoaded', () => {
-  const btnGenerate = document.querySelector('#btnGenerate');
+document.addEventListener("DOMContentLoaded", () => {
+  const btnGenerate = document.querySelector("#btnGenerate");
 
-  btnGenerate.addEventListener('click', onGenerateLuckyNumber);
+  btnGenerate.addEventListener("click", onGenerateLuckyNumber);
 });
